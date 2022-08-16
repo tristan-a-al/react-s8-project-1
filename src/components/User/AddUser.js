@@ -1,5 +1,6 @@
-import React, { useState } from "React";
+import React, { useState } from "react";
 import Button from "../UI/Button";
+import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
 import styles from "./AddUser.module.css";
 
@@ -9,38 +10,46 @@ import styles from "./AddUser.module.css";
  * @returns
  */
 function AddUser(props) {
-  const [username, validateUsername] = useState();
-  const [age, validateAge] = useState();
-  const [userDetails, addUserToList] = useState();
-  let isUsernameValid = false;
-  let isAgeValid = false;
-  let isFormEmpty = true;
+  //   const [username, validateUsername] = useState();
+  //   const [age, validateAge] = useState();
+  //   const [userDetails, addUserToList] = useState();
+  //   let isUsernameValid = false;
+  //   let isAgeValid = false;
+  //   let isFormEmpty = true;
+
+  //   /**
+  //    *
+  //    * @param {*} event
+  //    */
+  //   const updateUsernameHandler = (event) => {};
+
+  //   /**
+  //    *
+  //    * @param {*} event
+  //    */
+  //   const updateAgeHandler = (event) => {};
 
   /**
    *
-   * @param {*} event
    */
-  const updateUsernameHandler = (event) => {};
-
-  /**
-   *
-   * @param {*} event
-   */
-  const updateAgeHandler = (event) => {};
-
-  /**
-   *
-   */
-  const addUserHandler = () => {};
+  const addUserHandler = (event) => {
+    event.preventDefault();
+  };
 
   return (
-    <form>
-      <label class={styles.input.label}>Username</label>
-      <input class={styles.input.input} onUpdate={updateUsernameHandler}></input>
-      <label class={styles.input.label}>Age (Years)</label>
-      <input class={styles.input.input} onUpdate={updateAgeHandler}></input>
-      <Button onClick={addUserHandler}>Add User</Button>
-    </form>
+    <Card className={styles.input}>
+      <form onSubmit={addUserHandler}>
+        <label className={styles.input.label} htmlFor="username">
+          Username
+        </label>
+        <input id="username" class={styles.input.input} type="text"></input>
+        <label className={styles.input.label} htmlFor="age">
+          Age (Years)
+        </label>
+        <input id="age" className={styles.input.input} type="number"></input>
+        <button type="submit">Add User</button>
+      </form>
+    </Card>
   );
 }
 

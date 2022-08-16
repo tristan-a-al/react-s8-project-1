@@ -3,26 +3,26 @@ import AddUser from "./components/User/AddUser";
 import UserList from "./components/User/UserList";
 
 function App() {
-  const [users, updateUsers] = useState([]);
+  const [users, updateUsers] = useState();
 
-  const addUserHandler = (newUsers) => {
-    updateUsers((prevUsers) => {
-      users = newUsers.concat(prevUsers);
-    });
+  const addUserHandler = (event) => {
+    // updateUsers((prevUsers) => {
+    //   newUsers.concat(prevUsers);
+    // });
   };
 
-  const removeUserHandler = (uidToRemove) => {
-    updateUsers((prevUsers) => {
-      users = prevUsers.filter((uidExisting) => {
-        return uidToRemove !== uidExisting;
-      });
-    });
+  const removeUserHandler = (event) => {
+    // updateUsers((prevUsers) => {
+    //   prevUsers.filter((uidExisting) => {
+    //     return uidToRemove !== uidExisting;
+    //   });
+    // });
   };
 
   return (
     <React.Fragment>
-      <AddUser onAddUser={addUserHandler} />
-      <UserList onRemoveUser={removeUserHandler} />
+      <AddUser />
+      <UserList />
     </React.Fragment>
   );
 }
