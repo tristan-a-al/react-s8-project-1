@@ -3,26 +3,35 @@ import AddUser from "./components/User/AddUser";
 import UserList from "./components/User/UserList";
 
 function App() {
-  const [users, updateUsers] = useState();
+  const [existingUsers, setExistingUsers] = useState([]);
 
-  const addUserHandler = (event) => {
-    // updateUsers((prevUsers) => {
-    //   newUsers.concat(prevUsers);
-    // });
+  const addUserHandler = (name, age) => {
+    console.log("Adding new user... ", name, age);
+    let id = Math.random();
+    let newUser = {
+      id: id,
+      name: name,
+      age: age,
+    };
+    setExistingUsers((prevUsers) => {
+      console.log([newUser, ...prevUsers]);
+      return [newUser, ...prevUsers];
+    });
   };
 
-  const removeUserHandler = (event) => {
-    // updateUsers((prevUsers) => {
-    //   prevUsers.filter((uidExisting) => {
-    //     return uidToRemove !== uidExisting;
-    //   });
-    // });
+  const removeUserHandler = (uidToRemove) => {
+    console.log("Deleting user ", uidToRemove);
+    setExistingUsers((prevUsers) => {
+      return [...prevUsers].filter((uidExisting) => {
+        return uidToRemove !== uidExisting;
+      });
+    });
   };
 
   return (
     <React.Fragment>
-      <AddUser />
-      <UserList />
+      <AddUser onAddUser={addUserHandler} />
+      <UserList users={existingUsers} onRemoveUser={removeUserHandler} />
     </React.Fragment>
   );
 }

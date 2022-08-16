@@ -1,10 +1,16 @@
 import React from "react";
-import Styles from "./Button.module.js";
+import styles from "./Button.module.css";
 
 function Button(props) {
-    return (
-        <button class={Styles.button}>{props.text}</button>
-    );
+  return (
+    <button
+      className={styles.button}
+      type={props.type || "button"}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
 }
 
 export default Button;
